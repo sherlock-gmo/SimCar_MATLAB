@@ -10,7 +10,7 @@ Different experiments were done at different speeds. Check the video:
 All the details of the software can be found in the next ~~[link](https://github.com/sherlock-gmo)~~
 
 Please cite as:
-
+```bibtex
 @phdthesis{Gonzalez2025,
 	author    = {Gonz{\'{a}}lez-Miranda O.},
 	title     = {Sistema de conducci{\'{o}}n autom{\'{a}}tica para el veh{\'{i}}culo AutoMINY},
@@ -19,9 +19,9 @@ Please cite as:
 	school = {CINVESTAV},
 	pages     = {146},
 	type = {Tesis doctoral}
-	~~#note       = {Disponible en \url{https://repositorio.cinvestav.mx/handle/cinvestav/2261}},~~
+	#note       = {Disponible en \url{https://repositorio.cinvestav.mx/handle/cinvestav/2261}},
 }
-
+```
 
 
 
