@@ -71,32 +71,30 @@ z0 = 0;
 psi0 = 88*(pi/180);
 
 % Controlador Longitudinal (ADR)
-% 100[km/h] = 27.7778[m/s] = 157.8947[rad/s]
-rho_w = 19*(157.8947/100);   % [rad/s] Verl. rueda de referencia
-r = 1/4;    % ratio de los engranajes de la tracccion
-K1 = 800000;    % [N/s] Cota sup. de DFx
-D1 = 1.0;   % [rad/s] Cota sup. del error de seguimiento
-D2 = 1.0;   % Cota sup. del error de estimacion de la insertidumbre
-zeta = 1.5; %1.0
-wn = 0.25;  %10.0 
-q = (((2*zeta*(wn^3)*(D1^2))/(K1*D2))^(1/3))*(0.99); %*(0.75)
-kp = 2*zeta*wn/q;
-ki = (wn^2)/(q^2);
+% 100[km/h] = 27.7778[m/s] 
+% 50[km/h] = 13.8889[m/s] 
+% 45[km/h] = 12.5[m/s] 
+Vx_ref = 50*(1000/3600); % [m/s] %28.62
+L1 = 1800; 
+L2 = 1775; 
+zeta = 10.0; %1.5
+wn = 30.0;  %0.25 
+kp = 2*zeta*wn; %/q;
+ki = (wn^2); %/(q^2);
+kv = 1; %1.0;
 
 
 % Controlador Lateral (LSTM+BS)
-Kz1 = 1;  
-Kz2 = 13; 
-Kz3 = 20;
-
-fc = 1;         % Frecuencia de corte del filtro PB en Hz
+Kz1 = 0.5; %1;  
+Kz2 = 6.5; %13; 
+Kz3 = 10.0; %20;
+fc = 5;         % Frecuencia de corte del filtro PB en Hz
 wc = 2*pi*fc;
-lh_vis = 5.0;   % Distancia de observacion
+lh_vis = 15.0;   % Distancia de observacion
 C_line = linspace(-lh_vis,lh_vis,30);
 % Red LSTM
 model_path = '/media/sherlock2204/Alice/Mis_Documentos_R/Doctorado/Tesis/SimCar_MATLAB/python/k2.8.0/LSTM_network_k2.8.0_trained.h5';
 net = importKerasNetwork(model_path);
-
 Vx_test = 50*(27.7778/100);
 
 %% Curvature Function
